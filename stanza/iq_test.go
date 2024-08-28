@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"gosrc.io/xmpp/stanza"
+	"github.com/kovel/go-xmpp/stanza"
 )
 
 func TestUnmarshalIqs(t *testing.T) {

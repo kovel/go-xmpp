@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/xml"
 	"fmt"
-	"gosrc.io/xmpp/stanza"
+	"github.com/kovel/go-xmpp/stanza"
 	"strconv"
 	"testing"
 	"time"

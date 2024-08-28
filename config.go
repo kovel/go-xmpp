@@ -1,7 +1,7 @@
 package xmpp
 
 import (
-	"gosrc.io/xmpp/stanza"
+	"github.com/kovel/go-xmpp/stanza"
 	"os"
 	"time"
 )

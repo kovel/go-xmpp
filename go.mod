@@ -1,6 +1,6 @@
-module gosrc.io/xmpp
+module github.com/kovel/go-xmpp
 
-go 1.13
+go 1.22
 
 require (
 	github.com/google/go-cmp v0.3.1

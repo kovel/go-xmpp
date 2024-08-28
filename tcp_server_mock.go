@@ -3,7 +3,7 @@ package xmpp
 import (
 	"encoding/xml"
 	"fmt"
-	"gosrc.io/xmpp/stanza"
+	"github.com/kovel/go-xmpp/stanza"
 	"net"
 	"testing"
 	"time"
