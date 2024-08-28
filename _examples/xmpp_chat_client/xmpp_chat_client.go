@@ -10,17 +10,18 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"github.com/awesome-gocui/gocui"
-	"github.com/spf13/pflag"
-	"github.com/spf13/viper"
-	"github.com/kovel/go-xmpp"
-	"github.com/kovel/go-xmpp/stanza"
 	"log"
 	"os"
 	"path"
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/awesome-gocui/gocui"
+	"github.com/kovel/go-xmpp"
+	"github.com/kovel/go-xmpp/stanza"
+	"github.com/spf13/pflag"
+	"github.com/spf13/viper"
 )
 
 const (
@@ -124,7 +125,7 @@ func startClient(g *gocui.Gui, config *config) {
 
 	// ==========================
 	// Client setup
-	clientCfg := xmpp.Config{
+	clientCfg := &xmpp.Config{
 		TransportConfiguration: xmpp.TransportConfiguration{
 			Address: config.Server[serverAddressKey],
 		},
@@ -292,7 +293,11 @@ func updateRosterFromConfig(config *config) {
 // Updates the menu panel of the view with the current user's roster, by asking the server.
 func askForRoster(client xmpp.Sender, g *gocui.Gui, config *config) {
 	// Craft a roster request
-	req := stanza.NewIQ(stanza.Attrs{From: config.Client[clientJid], Type: stanza.IQTypeGet})
+	req, err := stanza.NewIQ(stanza.Attrs{From: config.Client[clientJid], Type: stanza.IQTypeGet})
+	if err != nil {
+		logger.Fatalln(err)
+	}
+
 	req.RosterItems()
 	if logger != nil {
 		m, _ := xml.Marshal(req)
